@@ -1,0 +1,99 @@
+{
+    "rules": {
+        "class-name": true,
+        "one-line": [
+            true,
+            "check-open-brace",
+            "check-whitespace"
+        ],
+        "whitespace": [
+            true,
+            "check-branch",
+            "check-decl",
+            "check-operator",
+            "check-module",
+            "check-separator",
+            "check-type"
+        ],
+        "typedef-whitespace": [
+            true,
+            {
+                "call-signature": "nospace",
+                "index-signature": "nospace",
+                "parameter": "nospace",
+                "property-declaration": "nospace",
+                "variable-declaration": "nospace"
+            },
+            {
+                "call-signature": "onespace",
+                "index-signature": "onespace",
+                "parameter": "onespace",
+                "property-declaration": "onespace",
+                "variable-declaration": "onespace"
+            }
+        ],
+        "no-internal-module": true,
+        "no-null-keyword": false,
+        "jsdoc-format": true,
+        "trailing-comma": [
+            true,
+            {
+                "multiline": "always",
+                "singleline": "never"
+            }
+        ],
+        "no-conditional-assignment": true,
+        "no-console": false,
+        "no-debugger": true,
+        "use-isnan": true,
+        "no-unsafe-finally": true,
+        "curly": [
+            true,
+            "ignore-same-line"
+        ],
+        "no-switch-case-fall-through": true,
+        "no-invalid-this": [
+            true,
+            "check-function-in-method"
+        ],
+        "no-construct": true,
+        "no-unused-new": true,
+        "no-string-throw": true,
+        "no-unused-expression": [true, "allow-fast-null-checks"],
+        "radix": true,
+        "no-shadowed-variable": true,
+        "no-unused-variable": true,
+        "eofline": true,
+        "variable-name": [
+            true,
+            "ban-keywords",
+            "allow-leading-underscore"
+        ],
+        "indent": [
+            true,
+            "spaces",
+            4
+        ],
+        "no-consecutive-blank-lines": true,
+        "no-trailing-whitespace": true,
+        "one-variable-per-declaration": [
+            true,
+            "ignore-for-loop"
+        ],
+        "quotemark": [
+            true,
+            "single",
+            "avoid-escape"
+        ],
+        "semicolon": [
+            true,
+            "never"
+        ],
+        "comment-format": [
+            true,
+            "check-space"
+        ],
+        "no-var-keyword": true,
+        "prefer-const": true
+    }
+}
