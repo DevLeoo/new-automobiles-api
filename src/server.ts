@@ -8,5 +8,5 @@ app.listen(PORT, () => {
 });
 
 process.on('unhandledRejection', (reason, promise) => {
-    console.log(`Unhandled Rejection at: ${reason}`);
+    console.log(`❌ Unhandled Rejection at: ${reason}`);
 });
