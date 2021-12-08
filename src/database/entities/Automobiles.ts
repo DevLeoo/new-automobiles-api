@@ -1,13 +1,13 @@
-import { Entity, Column } from 'typeorm';
+import { Entity, Column, PrimaryColumn } from 'typeorm';
 
-@Entity()
-export class Photo {
-    @Column()
-    placa: string | undefined;
-
-    @Column()
-    modelo: string | undefined;
+@Entity({ name: 'automobile' })
+export class Automobile {
+    @PrimaryColumn()
+    plate!: string;
 
     @Column()
-    cor: string | undefined;
+    model!: string;
+
+    @Column()
+    color!: string;
 }
