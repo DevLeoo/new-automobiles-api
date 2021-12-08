@@ -3,11 +3,11 @@ import { Entity, Column, PrimaryColumn } from 'typeorm';
 @Entity({ name: 'automobile' })
 export class Automobile {
     @PrimaryColumn()
-    plate!: string;
+    plate: string;
 
     @Column()
-    model!: string;
+    model: string;
 
     @Column()
-    color!: string;
+    color: string;
 }

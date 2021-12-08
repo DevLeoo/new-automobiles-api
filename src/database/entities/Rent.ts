@@ -3,17 +3,17 @@ import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 @Entity({ name: 'rent' })
 export class Rent {
     @PrimaryGeneratedColumn()
-    id!: number;
+    id: number;
 
     @Column()
-    car!: string;
+    car: string;
 
     @Column()
-    driver!: string;
+    driver: string;
 
     @Column()
-    withdrawal_date!: Date;
+    withdrawal_date: Date;
 
     @Column()
-    delivery_date!: Date;
+    delivery_date: Date;
 }

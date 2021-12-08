@@ -12,7 +12,7 @@ module.exports = {
     migrationsTableName: 'migrations',
     migrations: ['src/database/migrations/*.ts'],
     cli: {
-        "entitiesDir": "src/database/entity",
+        entitiesDir: "src/database/entity",
         migrationsDir: 'src/database/migrations',
     },
 };

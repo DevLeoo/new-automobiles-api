@@ -2,7 +2,12 @@ import { NextFunction, Request, Response, Router } from 'express';
 
 const routes: Router = Router();
 
-routes.get('/', async (req: Request, res: Response, next: NextFunction) => {});
+routes.get('/', async (req: Request, res: Response, next: NextFunction) => {
+    try {
+    } catch (e) {
+        console.log('error: ', e);
+    }
+});
 
 routes.post(
     '/register',
