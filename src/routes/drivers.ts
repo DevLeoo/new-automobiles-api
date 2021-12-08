@@ -1,21 +1,16 @@
-import { NextFunction, Request, Response, Router } from 'express';
+import { Router } from 'express';
+import Drivers from '../controllers/Drivers.controllers';
 
 const routes: Router = Router();
 
-routes.get('/', async (req: Request, res: Response, next: NextFunction) => {});
+routes.get('/', Drivers.findAll);
 
-routes.get('/:nome', async (req: Request, res: Response, next: NextFunction) => {});
+routes.get('/:id', Drivers.findOne);
 
-routes.post(
-    '/register',
-    async (req: Request, res: Response, next: NextFunction) => {},
-);
+routes.post('/', Drivers.store);
 
-routes.put('/update', async (req: Request, res: Response, next: NextFunction) => {});
+routes.put('/update/:id', Drivers.update);
 
-routes.delete(
-    '/delete/:id',
-    async (req: Request, res: Response, next: NextFunction) => {},
-);
+routes.delete('/:id', Drivers.delete);
 
 export default routes;
