@@ -1,7 +1,7 @@
 require('dotenv/config');
 
 module.exports = {
-    type: 'postgres',
+    type: 'mysql',
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
     username: process.env.DB_USER,
@@ -12,6 +12,7 @@ module.exports = {
     migrationsTableName: 'migrations',
     migrations: ['src/database/migrations/*.ts'],
     cli: {
+        "entitiesDir": "src/database/entity",
         migrationsDir: 'src/database/migrations',
     },
 };
