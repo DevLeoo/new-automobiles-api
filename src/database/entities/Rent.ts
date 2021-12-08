@@ -1,16 +1,19 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
-@Entity()
-export class Photo {
+@Entity({ name: 'rent' })
+export class Rent {
     @PrimaryGeneratedColumn()
-    id: number | undefined;
+    id!: number;
 
     @Column()
-    car: string | undefined;
+    car!: string;
 
     @Column()
-    driver: string | undefined;
+    driver!: string;
 
     @Column()
-    date: Date | undefined;
+    withdrawal_date!: Date;
+
+    @Column()
+    delivery_date!: Date;
 }
