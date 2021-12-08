@@ -1,13 +1,13 @@
 import { Router } from 'express';
 
-import Car from './cars';
+import Car from './automobiles';
 import Driver from './drivers';
 import Rent from './rent';
 
 const routes = Router();
 
-routes.use('/cars', Car);
-routes.use('/cars', Driver);
-routes.use('/cars', Rent);
+routes.use('/automobile', Car);
+routes.use('/driver', Driver);
+routes.use('/rent', Rent);
 
 export default routes;
