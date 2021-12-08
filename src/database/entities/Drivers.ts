@@ -1,10 +1,10 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
-@Entity()
-export class Photo {
+@Entity({ name: 'driver' })
+export class Driver {
     @PrimaryGeneratedColumn()
-    id: number | undefined;
+    id!: number;
 
     @Column()
-    name: string | undefined;
+    name!: string;
 }
