@@ -2,11 +2,11 @@ import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
 @Entity({ name: 'rent' })
 export class Rent {
-    @PrimaryGeneratedColumn()
+    @PrimaryGeneratedColumn('uuid')
     id: number;
 
     @Column()
-    car: string;
+    automobile: string;
 
     @Column()
     driver: string;
