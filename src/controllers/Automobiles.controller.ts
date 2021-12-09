@@ -29,7 +29,8 @@ class AutomobileController {
         const repository = getRepository(Automobile);
         const plate: string = req.params.plate as string;
 
-        const result = await repository.find({ where: { plate } });
+        const result = await repository.findOne({ where: { plate } });
+
         if (!result)
             return res.status(404).json({ mensagem: `Automobile not found` });
 
@@ -58,8 +59,9 @@ class AutomobileController {
     async delete(req: Request, res: Response) {
         const repository = getRepository(Automobile);
         const plate: string = req.params.plate as string;
-        await repository.delete(plate);
-
+        const resp = await repository.delete(plate);
+        if (resp.affected == 0)
+            return res.status(404).json({ mensagem: 'Automobile not found' });
         return res.send('Automobile Deleted');
     }
 }
