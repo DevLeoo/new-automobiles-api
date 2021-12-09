@@ -7,6 +7,6 @@ routes.get('/', Rent.findAll);
 
 routes.post('/', Rent.store);
 
-routes.put('/finished/:id', Rent.finish);
+routes.put('/:id', Rent.finish);
 
 export default routes;
