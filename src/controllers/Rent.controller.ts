@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { getRepository } from 'typeorm';
-import { validateConditions, checkisRentAvailable } from '../utils/checkRent';
+import validateAll from '../utils/checkRent';
 import { Rent } from '../database/entities/Rent';
 
 class RentController {
@@ -8,19 +8,10 @@ class RentController {
         const repository = getRepository(Rent);
 
         const { driver, automobile, delivery_date } = req.body;
-        const checkConditions: boolean | undefined = await validateConditions(
-            driver,
-            automobile,
-        );
 
-        if (!checkConditions)
-            return res
-                .status(409)
-                .send({ mensagem: 'Driver and/or Automobile not exists' });
-
-        if ((await checkisRentAvailable(driver, automobile)) === undefined)
-            return res.status(409).send({
-                mensagem: 'Driver and/or Automobile are unavailable',
+        if (!(await validateAll(driver, automobile)))
+            return res.status(404).json({
+                mensagem: 'Driver and/or Automobile are unavailable or not exist',
             });
 
         const rent = repository.create({
