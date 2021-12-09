@@ -9,7 +9,7 @@ routes.get('/:plate', Automobile.findOne);
 
 routes.post('/', Automobile.store);
 
-routes.put('/update/:plate', Automobile.update);
+routes.put('/:plate', Automobile.update);
 
 routes.delete('/:plate', Automobile.delete);
 
