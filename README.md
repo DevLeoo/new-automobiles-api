@@ -13,6 +13,9 @@
     <li>
         <a href="https://www.npmjs.com/" target="_blank" >Node Package Manager (npm) - 7.14.0 ou superior</a>
     </li>
+    <li>
+        <a href="https://docs.docker.com/compose/install/" target="_blank" >Docker Compose</a>
+    </li>
     <li>Banco de dados 'rent' criado e ativo.<sub> Instruções no fim do documento</sub>
     </li>
 </ul>
@@ -30,6 +33,10 @@ Para a execução do projeto de maneira local deve ser executado os seguintes pa
     Instalar as requisições do projeto, através do seguinte comando:
     <br/>
     <code>npm install</code>
+    <br/>
+    Após criar a base de dados, rodar o comando
+    <br/>
+    <code>npm run m:run</code>
     <br/>
     Após a instalação, digite o seguinte comando:
     <br/>
@@ -60,22 +67,17 @@ Assim, todos os arquivos de teste serão executados
 
 
 ## Configuração do Banco de dados
-### Requisitos.
-<ul>
-    <li>
-        <a href="https://www.wampserver.com/en/" target="_blank"> WAMP </a> ou 
-        <a href="https://www.apachefriends.org/pt_br/index.html" target="_blank" >XAMPP</a><sub>preferencialmente</sub> 
-    </li>
-</ul>
+
 
 ### Como criar
-Após configurado corretamente o servidor local, siga os passos abaixo:
+Após instalado e configurado corretamente o docker compose, você deve:
 
-Para criar o banco, basta entrar em 
-<code>http://localhost/phpmyadmin</code>
-Nome menu superior ir em Mais > Importar > Escolher arquivo > Executar
+Para criar o banco, basta rodar o comando em um terminal
+<code>docker-compose up app</code>
 
-Na pasta raiz do projeto se encontra um arquivo denominado
-<code>automobiles_db</code> que vc deve utilizar para criar seu banco de dados.
+Após esse processo, você terá o mysql e phpmyadmin ativo.
 
-Após o processo concluído, você terá seu banco de dados funcional e poderá utilizar a aplicação
+Acesse o <code><a href="http://localhost">phpmyadmin</a></code>, entre com as seguintes credenciais: 
+<code>{"servidor": "db", "user": "root", "password": "password" } </code>
+
+Também é necessário criar a base de dados "rent", basta ir no menu lateral esquerdo, clicar em "Novo" e criar a nova base de dados.
