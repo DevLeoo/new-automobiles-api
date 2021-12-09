@@ -44,6 +44,8 @@ class AutomobileController {
         const automobilesExists = await repository.findOne({
             where: { plate },
         });
+        if (!automobilesExists)
+            return res.status(404).json({ mensagem: 'Automobile not found' });
 
         automobilesExists!.model = model;
         automobilesExists!.color = color;
