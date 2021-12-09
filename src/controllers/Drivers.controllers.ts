@@ -29,7 +29,7 @@ class DriverController {
         const repository = getRepository(Driver);
         const id: string = req.params.id as string;
 
-        const result = await repository.find({ where: { id } });
+        const result = await repository.findOne({ where: { id } });
         if (!result) return res.status(404).json({ mensagem: `Driver not found` });
 
         return res.status(200).send(result);
@@ -53,8 +53,9 @@ class DriverController {
     async delete(req: Request, res: Response) {
         const repository = getRepository(Driver);
         const id: string = req.params.id as string;
-        await repository.delete(id);
-
+        const resp = await repository.delete(id);
+        if (resp.affected == 0)
+            return res.status(404).json({ mensagem: 'Driver not found' });
         return res.send('Driver Deleted');
     }
 }
