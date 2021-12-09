@@ -53,4 +53,20 @@ const checkisRentAvailable = async (
     return true;
 };
 
-export { checkisRentAvailable, validateConditions };
+const validateAll = async (
+    driverId: string,
+    automobilePlate: string,
+): Promise<boolean | undefined> => {
+    const driverAutomobileExists = await validateConditions(
+        driverId,
+        automobilePlate,
+    );
+    const driverAutomobileAvailable = await checkisRentAvailable(
+        driverId,
+        automobilePlate,
+    );
+
+    if (!(driverAutomobileExists && driverAutomobileAvailable)) return undefined;
+    return true;
+};
+export default validateAll;
