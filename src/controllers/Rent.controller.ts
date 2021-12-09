@@ -14,10 +14,12 @@ class RentController {
         );
 
         if (!checkConditions)
-            return res.send({ mensagem: 'Driver and/or Automobile not exists' });
+            return res
+                .status(409)
+                .send({ mensagem: 'Driver and/or Automobile not exists' });
 
         if ((await checkisRentAvailable(driver, automobile)) === undefined)
-            return res.send({
+            return res.status(409).send({
                 mensagem: 'Driver and/or Automobile are unavailable',
             });
 
@@ -46,6 +48,8 @@ class RentController {
         const rent = await repository.findOne({
             where: { id },
         });
+
+        if (!rent) return res.status(404).json({ mensagem: 'Rent not found' });
 
         rent!.delivery_date = new Date().toDateString() as any;
 
