@@ -9,7 +9,7 @@ routes.get('/:id', Drivers.findOne);
 
 routes.post('/', Drivers.store);
 
-routes.put('/update/:id', Drivers.update);
+routes.put('/:id', Drivers.update);
 
 routes.delete('/:id', Drivers.delete);
 
