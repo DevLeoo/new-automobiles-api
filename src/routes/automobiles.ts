@@ -3,7 +3,7 @@ import Automobile from '../controllers/Automobiles.controller';
 
 const routes: Router = Router();
 
-routes.get('/', Automobile.findAll);
+routes.get('/', Automobile.find);
 
 routes.get('/:plate', Automobile.findOne);
 
