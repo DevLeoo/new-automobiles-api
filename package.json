@@ -32,14 +32,14 @@
     "ts-node": "^10.4.0"
   },
   "ava": {
-    "babel": {
-      "compileEnhancements": false
-    },
     "files": [
       "!dist"
     ],
     "extensions": [
       "ts"
+    ],
+    "require": [
+      "ts-node/register"
     ]
   },
   "scripts": {
