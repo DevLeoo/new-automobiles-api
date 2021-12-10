@@ -1,0 +1,523 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Car Rent API",
+        "descript": "API responsávelo por aluguel de carros",
+        "contact": {
+            "name": "Leonardo Teixeira Cândido",
+            "url": "https://www.linkedin.com/in/leonardo-teixeira-c%C3%A2ndido-286065191/",
+            "email": "leonardo.leotc@gmail.com"
+        },    
+        "version": "1.0.0"
+    },
+    "servers":[
+        {
+            "url": "http://localhost:3000/",
+            "description": "API de Homolog"
+        }
+    ],
+    "paths": {
+        "/automobile/": {
+            "post": {
+                "summary": "Cadastro de automóveis",
+                "description": "Rota responsável pelo cadastro de um novo automóvel",
+                "tags": ["Automobiles"],
+                "requestBody":{
+                    "content": {
+                        "application/json": {
+                            "type": "object",
+                            "schema": {
+                                "$ref": "#/components/schemas/Automobile"
+                            },
+                            "examples": {
+                                "automobile": {
+                                    "value": {
+                                        "plate": "ABC-1234",
+                                        "model": "Honda Civic",
+                                        "color": "Cinza"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema":{ 
+                                    "items": {
+                                        "$ref": "#/components/schemas/Automobile"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "summary": "Consulta de automóveis",
+                "description": "Rota responsável pela consulta de todos os automóveis",
+                "tags": ["Automobiles"],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema":{ 
+                                    "items": {
+                                        "$ref": "#/components/schemas/Automobile"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/automobile/{plate}": {
+            "get": {
+                "summary": "Consulta de automóvel",
+                "description": "Rota responsável pela consulta de um único automóvel",
+                "tags": ["Automobiles"],
+                "parameters": [
+                    {
+                        "name": "plate",
+                        "in": "path",
+                        "required": true,
+                        "description": "Placa do automóvel",
+                        "example": "ABC-1234",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema":{ 
+                                    "items": {
+                                        "$ref": "#/components/schemas/Automobile"
+                                    }
+                                },
+                                "examples": {
+                                    "automobile": {
+                                        "value":{ 
+                                            "plate": "ABC-1234",
+                                            "model": "Honda Civic",
+                                            "color": "Cinza"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Automobile not found"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Remoção de automóveis",
+                "description": "Rota responsável por deletar um automóvel",
+                "tags": ["Automobiles"],
+                "parameters": [
+                    {
+                    "name": "plate",
+                    "in": "path",
+                    "description": "Placa do automóvel",
+                    "required": true,
+                    "example": "ABC-1234"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Automobile not found"
+                    }
+                }
+            },
+            "put": {
+                "summary": "Atualização de automóvel",
+                "description": "Rota responsável pela atualização de um único automóvel",
+                "tags": ["Automobiles"],
+                "parameters": [
+                    {
+                        "name": "plate",
+                        "in": "path",
+                        "description": "Placa do automóvel",
+                        "required": true,
+                        "example": "ABC-1234",
+                        "type": "string"
+                        
+                    }
+                ],
+                "requestBody":{
+                    "content": {
+                        "application/json": {
+                            "type": "object",
+                            "schema": {
+                                "$ref": "#/components/schemas/Automobile"
+                            },
+                            "examples": {
+                                "automobile": {
+                                    "value":{ 
+                                        "model": "Honda Civic",
+                                        "color": "Preto"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema":{ 
+                                    "items": {
+                                        "$ref": "#/components/schemas/Automobile"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Automobile not found"
+                    }
+                }
+            }
+        },
+        "/driver/": {
+            "post": {
+                "summary": "Cadastro de motorista",
+                "description": "Rota responsável pelo cadastro de um novo motorista",
+                "tags": ["Drivers"],
+                "requestBody":{
+                    "content": {
+                        "application/json": {
+                            "type": "object",
+                            "schema": {
+                                "$ref": "#/components/schemas/Driver"
+                            },
+                            "examples": {
+                                "driver": {
+                                    "value": {
+                                        "name": "Leonardo"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema":{ 
+                                    "items": {
+                                        "$ref": "#/components/schemas/Driver"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "summary": "Consulta de motoristas",
+                "description": "Rota responsável pela consulta de todos os motoristas",
+                "tags": ["Drivers"],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema":{ 
+                                    "items": {
+                                        "$ref": "#/components/schemas/Driver"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/driver/{id}": {
+            "get": {
+                "summary": "Consulta de motorista",
+                "description": "Rota responsável pela consulta de um único motorista",
+                "tags": ["Drivers"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do motorista",
+                        "required": true,
+                        "example": "1",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema":{ 
+                                    "items": {
+                                        "$ref": "#/components/schemas/Driver"
+                                    }
+                                },
+                                "examples": {
+                                    "driver": {
+                                        "value":{ 
+                                            "name": "Leonardo"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Driver not found"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Remoção de motorista",
+                "description": "Rota responsável por deletar um motorista",
+                "tags": ["Drivers"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do motorista",
+                        "required": true,
+                        "example": "1",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Driver not found"
+                    }
+                }
+            },
+            "put": {
+                "summary": "Atualização de motorista",
+                "description": "Rota responsável pela atualização de um único motorista",
+                "tags": ["Drivers"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do motorista",
+                        "required": true,
+                        "example": "1",
+                        "type": "string"
+                    }
+                ],
+                "requestBody":{
+                    "content": {
+                        "application/json": {
+                            "type": "object",
+                            "schema": {
+                                "$ref": "#/components/schemas/Driver"
+                            },
+                            "examples": {
+                                "automobile": {
+                                    "value":{ 
+                                        "name": "Cristiano"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema":{ 
+                                    "items": {
+                                        "$ref": "#/components/schemas/Driver"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Driver not found"
+                    }
+                }
+            }
+        },
+        "/rent/": {
+            "post": {
+                "summary": "Aluguel de automóvel & Motorista",
+                "description": "Rota responsável pelo aluguel de um automóvel e de um motorista",
+                "tags": ["Aluguel"],
+                "requestBody":{
+                    "content": {
+                        "application/json": {
+                            "type": "object",
+                            "schema": {
+                                "$ref": "#/components/schemas/Rent"
+                            }, 
+                            "examples": {
+                                "rent": {
+                                    "value": {
+                                        "driver": "1",
+                                        "automobile": "ABC-1234"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "409": {
+                        "description": "Driver and/or Automobile are unavailable or not exist"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema":{ 
+                                    "items": {
+                                        "$ref": "#/components/schemas/Rent"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "summary": "Consulta de aluguéis",
+                "description": "Rota responsável pela consulta de todos os aluguéis",
+                "tags": ["Aluguel"],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema":{ 
+                                    "items": {
+                                        "$ref": "#/components/schemas/Rent"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/rent/{id}": {
+            "put": {
+                "summary": "Finalizar aluguel de automóvel & Motorista",
+                "description": "Rota responsável por finalizar o aluguel de um automóvel e de um motorista",
+                "tags": ["Aluguel"],
+                "parameters": [
+                    {
+                    "name": "id",
+                    "in": "path",
+                    "description": "ID do aluguel",
+                    "required": true,
+                    "example": "c0ad1180-f7de-4722-91b4-34bd963aeb23"
+                    }
+                ],
+                "responses": {
+                    "404": {
+                        "description": "Rent not found"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema":{ 
+                                    "items": {
+                                        "$ref": "#/components/schemas/Rent"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Automobile": {
+                "type": "object",
+                "properties": {
+                    "plate": {
+                        "type": "string",
+                        "example": "ABC-1234"
+                    },
+                    "model": {
+                        "type": "string"
+                    },
+                    "color": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Driver": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "example": "1"
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Rent": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "example": "795c6a3d-9d36-4e4b-aac5-73235bc0282a"
+                    },
+                    "automobile": {
+                        "type": "string",
+                        "description": "Placa do automóvel"
+                    },
+                    "driver": {
+                        "type": "string",
+                        "description": "ID do motorista"
+                    },
+                    "withdrawal_date": {
+                        "type": "string",
+                        "description": "Data de retirada"
+                    },
+                    "delivery_date": {
+                        "type": "string",
+                        "required": false,
+                        "description": "Data de entrega"
+                    }
+                }
+            }
+        }
+    }
+}
