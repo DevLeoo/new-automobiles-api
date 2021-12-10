@@ -3,7 +3,7 @@ import Rent from '../controllers/Rent.controller';
 
 const routes: Router = Router();
 
-routes.get('/', Rent.findAll);
+routes.get('/', Rent.find);
 
 routes.post('/', Rent.store);
 
