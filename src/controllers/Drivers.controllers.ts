@@ -7,8 +7,6 @@ import {
     remove,
 } from '../repository/drivers.repository';
 
-import { Driver } from '../database/entities/Drivers';
-
 class DriverController {
     async store(req: Request, res: Response) {
         const { id, name } = req.body;
