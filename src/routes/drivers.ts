@@ -3,7 +3,7 @@ import Drivers from '../controllers/Drivers.controllers';
 
 const routes: Router = Router();
 
-routes.get('/', Drivers.findAll);
+routes.get('/', Drivers.find);
 
 routes.get('/:id', Drivers.findOne);
 
