@@ -28,4 +28,3 @@ export const remove = async (id: string) => {
     const repository = getRepository(Driver);
     return await repository.delete(id);
 };
-export default { findById, save, findAll, update };

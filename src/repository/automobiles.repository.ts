@@ -32,4 +32,3 @@ export const remove = async (plate: string) => {
     const repository = getRepository(Automobile);
     return await repository.delete(plate);
 };
-export default { findByPlate, save, findAll, update };
