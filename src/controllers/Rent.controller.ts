@@ -12,7 +12,7 @@ class RentController {
                 mensagem: 'Driver and/or Automobile are unavailable or not exist',
             });
 
-        const rent = save({
+        const rent = await save({
             driver,
             automobile,
             withdrawal_date: new Date().toDateString(),
