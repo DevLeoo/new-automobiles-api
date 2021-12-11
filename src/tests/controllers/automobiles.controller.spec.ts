@@ -35,8 +35,11 @@ mockedTest.serial('Should test store method and return conflict', async t => {
 });
 
 mockedTest.serial('Should test store method and automobile', async t => {
-    sinon.stub(repository, 'findByPlate').resolves(automobile);
-    sinon.stub(repository, 'save').resolves();
+    const findByPlateStub = sinon
+        .stub(repository, 'findByPlate')
+        .resolves(automobile);
+
+    const saveStub = sinon.stub(repository, 'save').resolves();
 
     const { model, car } = automobile;
     req.body = {
@@ -47,4 +50,7 @@ mockedTest.serial('Should test store method and automobile', async t => {
     const result = await Automobile.store(req, res);
 
     t.deepEqual(result, 'conflict' as any);
+
+    t.true(findByPlateStub.calledWith(req.body.plate));
+    t.true(saveStub.notCalled);
 });
